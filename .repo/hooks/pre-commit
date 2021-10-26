@@ -1,0 +1,3 @@
+#!/bin/sh
+SUBDIRECTORY_OK=1 . git-sh-setup
+$GIT_DIR/hooks/setgitperms.pl -r
