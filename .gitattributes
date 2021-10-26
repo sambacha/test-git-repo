@@ -4,3 +4,4 @@ git-hash export-subst
 *.sh text eol=lf
 security.txt ident
 LAST_COMMIT export-subst
+date*.txt filter=dater
