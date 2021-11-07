@@ -5,3 +5,4 @@ git-hash export-subst
 security.txt ident
 LAST_COMMIT export-subst
 date*.txt filter=dater
+CODENOTIFY linguist-language=CODEOWNERS
