@@ -1,4 +1,23 @@
-### `git`
+[![codenotify](https://github.com/sambacha/test-git-repo/actions/workflows/codenotify.yml/badge.svg)](https://github.com/sambacha/test-git-repo/actions/workflows/codenotify.yml)
+
+### `git repo utils`
+
+#### Motivation
+
+- Automate admin. tasks  
+- Reduce surface area of potential attacks  
+- Reduce surface area of trusted workflows (see, `git is apart of the trusted computing base`)  
+- Tooling to check configuration weaknesses   
+- Tooling to automate analysis (static, etc)  
+
+### Overview
+
+- perl script for extracting chomod permissions
+- codenotification for changes to certain files
+- automate meaningful hash for end user verification of deployed artifacts, etc
+
+
+### Misc Scripts
 
 ```sh
 echo '$Format:Last commit: %h by %aN at %cd%n%+w(76,6,9)%B$' > LAST_COMMIT
