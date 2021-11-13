@@ -4,7 +4,7 @@ set -e
 
 PACKAGE_JSON="package.json"
 PACKAGE_JSON_NEW="package.new.json"
-PACKAGE_LOCK="package-lock.json"  # default. when shrinkwrap used, is npm-shrinkwrap.json
+PACKAGE_LOCK="package-lock.json" # default. when shrinkwrap used, is npm-shrinkwrap.json
 
 function usage() {
 	echo "Usage: ${0} -d=<abs-path-to-dir-with-package.json> [-lf=<name-of-the-lock-file>]"
@@ -12,10 +12,22 @@ function usage() {
 }
 
 function check_reqs() {
-	jq --help > /dev/null 2>&1 || { echo "jq not installed. Aborting." >&2; exit 1; }
-	[ -d ${DIRECTORY} ] || { echo "Directory ${DIRECTORY} does not exist. Aborting"; exit 1; }
-	[ -f ${DIRECTORY}/${PACKAGE_JSON} ] || { echo "${DIRECTORY}/${PACKAGE_JSON} not found. Aborting"; exit 1; }
-	[ -f ${DIRECTORY}/${PACKAGE_LOCK} ] || { echo "${DIRECTORY}/${PACKAGE_LOCK} not found. Aborting"; exit 1; }
+	jq --help >/dev/null 2>&1 || {
+		echo "jq not installed. Aborting." >&2
+		exit 1
+	}
+	[ -d ${DIRECTORY} ] || {
+		echo "Directory ${DIRECTORY} does not exist. Aborting"
+		exit 1
+	}
+	[ -f ${DIRECTORY}/${PACKAGE_JSON} ] || {
+		echo "${DIRECTORY}/${PACKAGE_JSON} not found. Aborting"
+		exit 1
+	}
+	[ -f ${DIRECTORY}/${PACKAGE_LOCK} ] || {
+		echo "${DIRECTORY}/${PACKAGE_LOCK} not found. Aborting"
+		exit 1
+	}
 }
 
 function get_locked_version() {
@@ -25,7 +37,7 @@ function get_locked_version() {
 function set_locked_version() {
 	local cmd=".$1.$2=$3"
 	echo $cmd
-	jq --arg pkg "$2" --arg ver "$3" ${cmd} ${PACKAGE_JSON_NEW} > ${PACKAGE_JSON_NEW}.1 && \
+	jq --arg pkg "$2" --arg ver "$3" ${cmd} ${PACKAGE_JSON_NEW} >${PACKAGE_JSON_NEW}.1 &&
 		mv ${PACKAGE_JSON_NEW}.1 ${PACKAGE_JSON_NEW}
 }
 
@@ -44,10 +56,9 @@ function main() {
 	echo "DONE! Created ${DIRECTORY}/${PACKAGE_JSON_NEW}"
 }
 
-for i in "$@"
-do
-case $i in
-	-d=*|--directory=*)
+for i in "$@"; do
+	case $i in
+	-d=* | --directory=*)
 		DIRECTORY="${i#*=}"
 		DIRECTORY=${DIRECTORY%/}
 		if [[ "$DIRECTORY" != /* ]]; then
@@ -56,15 +67,15 @@ case $i in
 		fi
 		shift
 		;;
-	-l=*|--lock-file=*)
+	-l=* | --lock-file=*)
 		PACKAGE_LOCK="${i#*=}"
 		shift
 		;;
-	-h|--help)
+	-h | --help)
 		usage
 		exit 0
 		;;
-esac
+	esac
 done
 
 check_reqs
