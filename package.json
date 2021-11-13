@@ -1,12 +1,27 @@
 {
   "name": "yyearn",
   "version": "1.0.0",
-  "description": "",
+  "description": "[![codenotify](https://github.com/sambacha/test-git-repo/actions/workflows/codenotify.yml/badge.svg)](https://github.com/sambacha/test-git-repo/actions/workflows/codenotify.yml)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "sam bacha",
-  "license": "ISC"
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sambacha/test-git-repo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sambacha/test-git-repo/issues"
+  },
+  "homepage": "https://github.com/sambacha/test-git-repo#readme",
+  "dependencies": {
+    "fs": "^0.0.1-security"
+  }
 }

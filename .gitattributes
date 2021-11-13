@@ -6,3 +6,4 @@ security.txt ident
 LAST_COMMIT export-subst
 date*.txt filter=dater
 CODENOTIFY linguist-language=CODEOWNERS
+tarlockfile.tar lockable

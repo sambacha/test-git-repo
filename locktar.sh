@@ -1,6 +1,6 @@
 #!/bin/bash
 SOURCE_DATE_EPOCH="$(gdate +%s)"
-tar --sort=name \
+gtar --sort=name \
 	--mtime="@${SOURCE_DATE_EPOCH}" \
 	--owner=0 --group=0 --numeric-owner \
 	--pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
