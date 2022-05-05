@@ -25,6 +25,8 @@ echo 'Last commit date: $Format:%cd by %aN$' > LAST_COMMIT
 echo '$Id$' > security.txt
 
 git archive HEAD  --format tgz --worktree-attributes -o HEAD.tgz
+
+TZ=UTC git show --quiet --date="format-local:%Y.%-m.%-d" --format="nightly-%cd" >nightly-release.txt
 ```
 
 
